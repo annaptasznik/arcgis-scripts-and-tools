@@ -1,9 +1,8 @@
 import arcpy
 
+# set up
 mxd = arcpy.mapping.MapDocument("CURRENT")
-
 dfs = arcpy.mapping.ListDataFrames(mxd)
-
 
 # for each data frame, "zoom to layer"
 for df in dfs:
@@ -34,6 +33,6 @@ for df in dfs:
                 df.extent = newExtent
                 df.panToExtent(newExtent)
 
-        # if there's only one layer, can simply pan to its extent       
+        # if there's only one layer, one can simply pan to its extent       
         else:
             df.panToExtent(lyr.getSelectedExtent())
